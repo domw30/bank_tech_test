@@ -36,17 +36,22 @@ I'd like to be able to create a new bank account.
 ```
 As a user,
 So that I can store money safely,
-I'd like to be able to deposit my money into my bank account and record the date and value.
+I'd like to be able to deposit my money into my bank account.
 ```
 ```
 As a user,
 So that I can retrieve my stored money,
-I'd like to be able to withdraw my money out of my bank account and record the date and value.
+I'd like to be able to withdraw my money out of my bank account.
 ```
 ```
 As a user,
 So that I can remember my bank history,
 I'd like to be able to print a bank statement.
+```
+```
+As a user,
+So that I can recall the timing of my transactions,
+I'd like to be able to view the date of transactions.
 ```
 
 From this I am able to identify the need for three objects (bank, transactions, statement) and three methods (bank.deposit, bank.withdraw, bank.print). Once I had identified the objects and methods from my User Stories, I am able to create some feature tests using IRB, thus go on to write unit tests equal to the feature tests.
@@ -56,11 +61,11 @@ Creating a new bank to have a new object:
 ```
 bank = Bank.new
 ```
-Make a deposit into the open bank account. From the acceptance criteria, we need to pass an amount(value), and the date the deposit was made:
+Make a deposit into the open bank account. From the acceptance criteria, we need to pass an amount(value):
 ```
 bank.deposit(value)
 ```
-Make a withdrawal from the open bank account. From the acceptance criteria, we need to pass an amount(value), and the date the withdrawal was made:
+Make a withdrawal from the open bank account. From the acceptance criteria, we need to pass an amount(value):
 ```
 bank.withdraw(value)
 ```
