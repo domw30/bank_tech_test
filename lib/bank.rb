@@ -13,6 +13,8 @@ class Bank
   end
 
   def withdraw(value)
+    raise "Unable to action request" if @balance < value
+
     @balance -= value
   end
 

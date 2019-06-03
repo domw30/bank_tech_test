@@ -15,9 +15,8 @@ describe Bank do
   describe '#deposit' do
     context 'so the user can increase the bank account balance' do
       it 'should be able to deposit funds into the account' do
-        value = 2000
-        bank.deposit(value)
-        expect(bank.balance).to eq value
+        bank.deposit(2000)
+        expect(bank.balance).to eq 2000
       end
     end
   end
@@ -25,11 +24,15 @@ describe Bank do
   describe '#withdraw' do
     context 'so the user can decrease the bank account balance' do
       it 'should be able to withdraw funds from the account' do
-        value = 2000
-        value2 = 1500
-        bank.deposit(value)
-        bank.withdraw(value2)
+        bank.deposit(2000)
+        bank.withdraw(1500)
         expect(bank.balance).to eq 500
+      end
+    end
+
+    context 'so the user can not go overdrawn' do
+      it 'should raise an error if the withdrawal is more than the balance' do
+        expect { bank.withdraw(1000) }.to raise_error "Unable to action request"
       end
     end
   end
