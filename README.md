@@ -13,15 +13,15 @@ The task is to practice a tech test by creating a model of a bank, a customer, a
 
 ### Acceptance criteria
 
-**Given** a client makes a deposit of 1000 on 10-01-2012. 
+**Given** a client makes a deposit of 1000 on 10-01-2012.
 
-**And** a deposit of 2000 on 13-01-2012. 
+**And** a deposit of 2000 on 13-01-2012.
 
-**And** a withdrawal of 500 on 14-01-2012. 
+**And** a withdrawal of 500 on 14-01-2012.
 
-**When** she prints her bank statement. 
+**When** she prints her bank statement.
 
-**Then** she would see. 
+**Then** she would see.
 
 ### Approach
 
@@ -49,24 +49,20 @@ So that I can remember my bank history,
 I'd like to be able to print a bank statement.
 ```
 
-From this I am able to identify the need for a new object (bank) and four methods (bank.open, bank.deposit, bank.withdraw, bank.print). Once I had identified the objects and methods from my User Stories, I am able to create some feature tests using IRB, thus go on to write unit tests equal to the feature tests.
+From this I am able to identify the need for three objects (bank, transactions, statement) and three methods (bank.deposit, bank.withdraw, bank.print). Once I had identified the objects and methods from my User Stories, I am able to create some feature tests using IRB, thus go on to write unit tests equal to the feature tests.
 For example, in IRB, this would mean taking steps such as:
 
 Creating a new bank to have a new object:
 ```
 bank = Bank.new
 ```
-Opening a bank account to be able to make deposits and withdrawals into the correct account_id:
-```
-bank.open
-```
 Make a deposit into the open bank account. From the acceptance criteria, we need to pass an amount(value), and the date the deposit was made:
 ```
-bank.deposit(account_id, value, [date])
+bank.deposit(value)
 ```
 Make a withdrawal from the open bank account. From the acceptance criteria, we need to pass an amount(value), and the date the withdrawal was made:
 ```
-bank.withdraw(account_id, value, [date])
+bank.withdraw(value)
 ```
 In addition, we want to be able to print a bank statement that displays date, credit, debit and balance:
 ```
