@@ -104,7 +104,7 @@ Traceback (most recent call last):
 NoMethodError (undefined method `withdraw' for #<Bank:0x00007fca1b15d280 @balance=2000>)
 2.6.0 :007 >
 ```
-The above example highlights how I have used TDD. The aim is to drive the program using the errors on a feature test level, and then a unit test level.
+The above example highlights how I have used TDD. The aim is to drive the program using the errors on a feature test level, and then match the error on a unit test level to determine what steps to take next.
 
 ### Testing
 
