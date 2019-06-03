@@ -31,7 +31,7 @@ User Stories:
 ```
 As a user,
 So that I can keep track of my money,
-I'd like to be able to create a new bank account.
+I'd like to be able to create a new bank account with a default balance of zero.
 ```
 ```
 As a user,
