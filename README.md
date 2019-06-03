@@ -105,6 +105,20 @@ NoMethodError (undefined method `withdraw' for #<Bank:0x00007fca1b15d280 @balanc
 2.6.0 :007 >
 ```
 The above example highlights how I have used TDD. The aim is to drive the program using the errors on a feature test level, and then match the error on a unit test level to determine what steps to take next.
+```
+irb
+2.6.0 :001 > require './lib/bank.rb'
+ => true
+2.6.0 :002 > bank = Bank.new
+ => #<Bank:0x00007fa5b3838fa0 @balance=0>
+2.6.0 :003 > bank.deposit(2000)
+ => 2000
+2.6.0 :004 > bank.withdraw(1500)
+ => 500
+2.6.0 :005 > bank.withdraw(1000)
+ => -500
+ ```
+ The above example highlights the bank.withdraw feature working as the value of the amount to withdraw decreases the balance to 500. In addition, running this in IRB allowed me to see where an error should be raised if the balance is less than the withdrawal value, rather than returning -500 as above.
 
 ### Testing
 
