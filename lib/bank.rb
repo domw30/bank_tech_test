@@ -12,4 +12,8 @@ class Bank
     @balance += value
   end
 
+  def withdraw(value)
+    @balance -= value
+  end
+
 end

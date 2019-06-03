@@ -21,4 +21,16 @@ describe Bank do
       end
     end
   end
+
+  describe '#withdraw' do
+    context 'so the user can decrease the bank account balance' do
+      it 'should be able to withdraw funds from the account' do
+        value = 2000
+        value2 = 1500
+        bank.deposit(value)
+        bank.withdraw(value2)
+        expect(bank.balance).to eq 500
+      end
+    end
+  end
 end
