@@ -8,4 +8,8 @@ class Bank
     @balance = DEFAULT_BALANCE
   end
 
+  def deposit(value)
+    @balance += value
+  end
+
 end
