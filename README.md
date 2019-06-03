@@ -81,6 +81,31 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
+Example of my approach using IRB for feature testing:
+
+```
+irb
+2.6.0 :001 > require './lib/bank.rb'
+ => true
+2.6.0 :002 > bank = Bank.new
+ => #<Bank:0x00007fca1b15d280 @balance=0>
+2.6.0 :003 > bank.balance
+ => 0
+2.6.0 :004 > bank.deposit(2000)
+ => 2000
+2.6.0 :005 > bank
+ => #<Bank:0x00007fca1b15d280 @balance=2000>
+ 2.6.0 :006 > bank.withdraw(2000)
+Traceback (most recent call last):
+        4: from /Users/student/.rvm/rubies/ruby-2.6.0/bin/irb:23:in `<main>'
+        3: from /Users/student/.rvm/rubies/ruby-2.6.0/bin/irb:23:in `load'
+        2: from /Users/student/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        1: from (irb):6
+NoMethodError (undefined method `withdraw' for #<Bank:0x00007fca1b15d280 @balance=2000>)
+2.6.0 :007 >
+```
+The above example highlights how I have used TDD. The aim is to drive the program using the errors on a feature test level, and then a unit test level.
+
 ### Testing
 
 To run tests run the commands below on the command line:
