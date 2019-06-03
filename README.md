@@ -119,6 +119,26 @@ irb
  => -500
  ```
  The above example highlights the bank.withdraw feature working as the value of the amount to withdraw decreases the balance to 500. In addition, running this in IRB allowed me to see where an error should be raised if the balance is less than the withdrawal value, rather than returning -500 as above.
+ ```
+ irb
+2.6.0 :001 > require './lib/bank.rb'
+ => true
+2.6.0 :002 > bank = Bank.new
+ => #<Bank:0x00007fd133874bd0 @balance=0>
+2.6.0 :003 > bank.deposit(2000)
+ => 2000
+2.6.0 :004 > bank.withdraw(1000)
+ => 1000
+2.6.0 :005 > bank.withdraw(3000)
+Traceback (most recent call last):
+        5: from /Users/student/.rvm/rubies/ruby-2.6.0/bin/irb:23:in `<main>'
+        4: from /Users/student/.rvm/rubies/ruby-2.6.0/bin/irb:23:in `load'
+        3: from /Users/student/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        2: from (irb):5
+        1: from /Users/student/Projects/bank_tech_test/lib/bank.rb:16:in `withdraw'
+RuntimeError (Unable to action request)
+```
+The above IRB example illustrates the use of raising an error if the withdrawal value is greater than the balance value.
 
 ### Testing
 
