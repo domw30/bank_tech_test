@@ -4,27 +4,25 @@ require 'print_statement'
 
 describe 'User Stories' do
 
-# As a user,
-# So that I can keep track of my money,
-# I'd like to be able to create a new bank account
-# with a default balance of zero.
+  subject(:bank) { Bank.new(Transactions.new, Print.new) }
 
-# As a user,
-# So that I can store money safely,
-# I'd like to be able to deposit my
-# money into my bank account.
+  it 'should allow the user to open a bank account' do
+    expect(bank).to be_an_instance_of(Bank)
+  end
 
-# As a user,
-# So that I can retrieve my stored money,
-# I'd like to be able to withdraw my money
-# out of my bank account.
+  it 'should allow the user to deposit money' do
+    expect { bank.deposit(500) }.not_to raise_error
+  end
 
-# As a user,
-# So that I can remember my bank history,
-# I'd like to be able to print a bank statement.
+  it 'should allow the user to withdraw money' do
+    bank.deposit(500)
+    expect { bank.withdraw(200) }.not_to raise_error
+  end
 
-# As a user,
-# So that I can recall the timing of my transactions,
-# I'd like to be able to view the date of transactions.
+  it 'should allow the user to print a bank statement with dates of transactions' do
+    bank.deposit(500)
+    bank.withdraw(200)
+    expect { bank.print_statement }.not_to raise_error
+  end
 
 end
