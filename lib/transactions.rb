@@ -13,20 +13,20 @@ class Transactions
 
   def deposit(value)
     balance_plus(value)
-    record_transaction(value)
+    record_transaction("credit", value)
   end
 
   def withdraw(value)
     raise "Unable to action request" if @balance < value
 
     balance_subtract(value)
-    record_transaction(value)
+    record_transaction("debit", value)
   end
 
 private
 
-  def record_transaction(value)
-    transaction = Time.now.strftime('%d/%m/%y'), value, @balance
+  def record_transaction(credit_or_debit, value)
+    transaction = Time.now.strftime('%d/%m/%y'), value, credit_or_debit, @balance
     @transactions.push(transaction)
   end
 
