@@ -2,8 +2,9 @@ require 'bank'
 
 describe Bank do
 
-  subject(:bank) { Bank.new(transactions) }
+  subject(:bank) { Bank.new(transactions, print) }
   let(:transactions) { double("transactions") }
+  let(:print) { double("print") }
 
 
   context 'so that the methods can be called from transactions' do

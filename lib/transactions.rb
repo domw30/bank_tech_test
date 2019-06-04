@@ -26,7 +26,8 @@ class Transactions
 private
 
   def record_transaction(value)
-    @transactions.push("|Value: #{value}|Date: #{TIME}|Balance: #{@balance}|")
+    transaction = Time.now.strftime('%d/%m/%y'), value, @balance
+    @transactions.push(transaction)
   end
 
   def balance_plus(value)
