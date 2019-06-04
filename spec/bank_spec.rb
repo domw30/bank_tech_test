@@ -14,5 +14,23 @@ describe Bank do
       end
     end
 
+    describe '#deposit' do
+      it 'transactions can use deposit method' do
+        allow(transactions).to receive(:deposit)
+        bank.deposit(500)
+        expect(transactions).to have_received(:deposit)
+      end
+    end
+
+    describe '#withdraw' do
+      it 'transactions can use withdraw method' do
+        allow(transactions).to receive(:deposit)
+        allow(transactions).to receive(:withdraw)
+        bank.deposit(500)
+        bank.withdraw(200)
+        expect(transactions).to have_received(:withdraw)
+      end
+    end
+
   end
 end
