@@ -43,17 +43,17 @@ describe Transactions do
         expect(transaction.transactions).to eq []
       end
     end
-    
+
     context 'so the transaction history can be recorded' do
       it 'deposit transaction information should be displayed' do
         transaction.deposit(500)
-        expect(transaction.transactions).to eq (["|Value: 500|Date: #{Transactions::TIME}|Balance: 500|"])
+        expect(transaction.transactions).to eq ["|Value: 500|Date: #{Transactions::TIME}|Balance: 500|"]
       end
 
       it 'withdraw transaction information should be displayed' do
         transaction.deposit(500)
         transaction.withdraw(100)
-        expect(transaction.transactions).to include ("|Value: 500|Date: #{Transactions::TIME}|Balance: 500|")
+        expect(transaction.transactions).to include "|Value: 500|Date: #{Transactions::TIME}|Balance: 500|"
       end
     end
   end
