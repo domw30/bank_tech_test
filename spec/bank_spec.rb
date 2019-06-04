@@ -32,6 +32,23 @@ describe Bank do
         expect(transactions).to have_received(:withdraw)
       end
     end
-
   end
+
+  describe '#print_statement' do
+    before do
+      allow(print).to receive(:pretty_print)
+      allow(transactions).to receive(:transactions)
+    end
+
+    it 'print should receive the pretty print method' do
+      bank.print_statement
+      expect(print).to have_received(:pretty_print)
+    end
+
+    it 'transactions should receive the transactions method' do
+      bank.print_statement
+      expect(transactions).to have_received(:transactions)
+    end
+  end
+
 end

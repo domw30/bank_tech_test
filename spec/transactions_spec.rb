@@ -49,13 +49,13 @@ describe Transactions do
     context 'so the transaction history can be recorded' do
       it 'deposit transaction information should be displayed' do
         transaction.deposit(500)
-        expect(transaction.transactions).to include (["#{TIME}", 500, "credit", 500])
+        expect(transaction.transactions.length).to eq 1
       end
 
-      it 'withdraw transaction information should be displayed' do
+      it 'withdraw transaction information should be displayed with other records' do
         transaction.deposit(500)
         transaction.withdraw(100)
-        expect(transaction.transactions).to include (["#{TIME}", 100, "debit", 400])
+        expect(transaction.transactions.length).to eq 2
       end
     end
   end

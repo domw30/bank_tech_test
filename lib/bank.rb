@@ -19,7 +19,7 @@ class Bank
   end
 
   def print_statement
-    statement.pretty_print(transactions.transactions)
+    print.pretty_print(transactions.transactions)
   end
 
 end
