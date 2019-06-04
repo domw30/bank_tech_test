@@ -9,12 +9,22 @@ class Bank
   end
 
   def deposit(value)
-    @balance += value
+    balance_plus(value)
   end
 
   def withdraw(value)
     raise "Unable to action request" if @balance < value
 
+    balance_subtract(value)
+  end
+
+  private
+
+  def balance_plus(value)
+    @balance += value
+  end
+
+  def balance_subtract(value)
     @balance -= value
   end
 
