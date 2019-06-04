@@ -11,17 +11,50 @@ The task is to practice a tech test by creating a model of a bank, a customer, a
 * Account statement (date, amount, balance) printing.
 * Data can be kept in memory (it doesn't need to be stored to a database or anything).
 
-### Acceptance criteria
+###  Installation
 
-**Given** a client makes a deposit of 1000 on 10-01-2012.
+From the command line, clone this repository to your machine:
+```
+git clone git@github.com:domw30/bank_tech_test.git
+```
+once cloned, run this command for gems:
+```
+bundle install
+```
 
-**And** a deposit of 2000 on 13-01-2012.
+### Using the program in IRB
 
-**And** a withdrawal of 500 on 14-01-2012.
+Require the file:
+```
+require './lib/bank.rb'
+```
+Create a new bank account and enter transactions:
+```
+my_bank = Bank.new(Transactions.new, Print.new)
+my_bank.deposit(500)
+my_bank.withdraw(400)
+my_bank.deposit(300)
+my_bank.print_statement
 
-**When** she prints her bank statement.
+ Date     || Credit  || Debit    || Balance
+ 04/06/19 || 300.00  || ------   || 400.00
+ 04/06/19 || ------- || 400.00   || 100.00
+ 04/06/19 || 500.00  || ------   || 500.00
+```
 
-**Then** she would see.
+### Testing
+
+To run tests run the commands below on the command line:
+```
+bundle install
+```
+```
+rspec
+```
+I have used Rubocop as the linter to ensure code formatting is of industry standards. To run rubocop enter the following on the command line:
+```
+rubocop
+```
 
 ### Approach
 
@@ -139,13 +172,3 @@ Traceback (most recent call last):
 RuntimeError (Unable to action request)
 ```
 The above IRB example illustrates the use of raising an error if the withdrawal value is greater than the balance value.
-
-### Testing
-
-To run tests run the commands below on the command line:
-```
-bundle install
-```
-```
-rspec
-```
