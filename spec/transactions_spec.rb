@@ -38,6 +38,12 @@ describe Transactions do
   end
 
   describe '#transactions' do
+    context 'so transactions history is correct' do
+      it 'should be initialized with an empty array' do
+        expect(transaction.transactions).to eq []
+      end
+    end
+    
     context 'so the transaction history can be recorded' do
       it 'deposit transaction information should be displayed' do
         transaction.deposit(500)
