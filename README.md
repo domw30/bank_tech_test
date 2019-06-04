@@ -172,3 +172,7 @@ Traceback (most recent call last):
 RuntimeError (Unable to action request)
 ```
 The above IRB example illustrates the use of raising an error if the withdrawal value is greater than the balance value.
+
+Following the above process cycle using TDD, I have been able to create a working program that reflects standard bank practices. I was able to remove logic from the bank class into a transaction class, and I also created a print class to handle the statements.
+
+Also, I have created three test files that handle tests separately for each of the classes, as well as a feature test file to test against the user stories.
