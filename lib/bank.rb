@@ -1,31 +1,19 @@
+require_relative './transactions'
+
 class Bank
 
-  attr_reader :balance
+  attr_reader :transactions
 
-  DEFAULT_BALANCE = 0
-
-  def initialize
-    @balance = DEFAULT_BALANCE
+  def initialize(transactions)
+    @transactions = transactions
   end
 
   def deposit(value)
-    balance_plus(value)
+    transactions.deposit(value)
   end
 
   def withdraw(value)
-    raise "Unable to action request" if @balance < value
-
-    balance_subtract(value)
-  end
-
-  private
-
-  def balance_plus(value)
-    @balance += value
-  end
-
-  def balance_subtract(value)
-    @balance -= value
+    transactions.withdraw(value)
   end
 
 end
