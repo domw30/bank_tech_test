@@ -2,11 +2,10 @@ class Transactions
 
   attr_reader :balance, :transactions
 
-  TIME = Time.now.strftime("%d/%m/%y")
-
   DEFAULT_BALANCE = 0
 
-  def initialize
+  def initialize(time = Time)
+    @time = time
     @balance = DEFAULT_BALANCE
     @transactions = []
   end
@@ -14,6 +13,7 @@ class Transactions
   def deposit(value)
     balance_plus(value)
     record_deposit(value)
+    @transactions.last
   end
 
   def withdraw(value)
@@ -21,13 +21,14 @@ class Transactions
 
     balance_subtract(value)
     record_withdraw(value)
+    @transactions.last
   end
 
 private
 
   def record_deposit(value)
     transaction = {
-      date: Time.now.strftime('%d/%m/%y'),
+      date: @time.now.strftime('%d/%m/%y'),
       credit: '%.2f' % value,
       debit: '------',
       balance: '%.2f' % @balance
@@ -38,7 +39,7 @@ private
 
   def record_withdraw(value)
     transaction = {
-      date: Time.now.strftime('%d/%m/%y'),
+      date: @time.now.strftime('%d/%m/%y'),
       credit: '------',
       debit: '%.2f' % value,
       balance: '%.2f' % @balance

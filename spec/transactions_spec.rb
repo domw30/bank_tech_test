@@ -1,10 +1,9 @@
 require 'transactions'
 
 describe Transactions do
-
-  subject(:transaction) { described_class.new }
-
-  TIME = Time.now.strftime("%d/%m/%y")
+  let(:time_now) { double(:time_now, strftime: "06/06/19" )}
+  let(:time) { double(:time, now: time_now )}
+  subject(:transaction) { described_class.new(time) }
 
   describe '#balance' do
     context 'when creating a new bank account it should' do
@@ -17,12 +16,12 @@ describe Transactions do
   describe '#deposit' do
     context 'so the user can increase the bank account balance' do
       it 'should be able to deposit funds into the account' do
-        expect(transaction.deposit(2000)).to eq([{
-          date: Time.now.strftime('%d/%m/%y'),
+        expect(transaction.deposit(2000)).to eq({
+          date: "06/06/19",
           credit: '%.2f' % 2000,
           debit: '------',
           balance: '%.2f' % 2000
-        }])
+        })
       end
     end
   end
@@ -31,8 +30,12 @@ describe Transactions do
     context 'so the user can decrease the bank account balance' do
       it 'should be able to withdraw funds from the account' do
         transaction.deposit(2000)
-        transaction.withdraw(1500)
-        expect(transaction.balance).to eq 500
+        expect(transaction.withdraw(1000)).to eq({
+          date: "06/06/19",
+          credit: '------',
+          debit: '%.2f' % 1000,
+          balance: '%.2f' % 1000
+        })
       end
     end
 
