@@ -5,7 +5,7 @@ class Bank
 
   attr_reader :transactions, :print
 
-  def initialize(transactions, print)
+  def initialize(transactions = Transactions.new, print)
     @transactions = transactions
     @print = print
   end

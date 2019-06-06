@@ -17,8 +17,12 @@ describe Transactions do
   describe '#deposit' do
     context 'so the user can increase the bank account balance' do
       it 'should be able to deposit funds into the account' do
-        transaction.deposit(2000)
-        expect(transaction.balance).to eq 2000
+        expect(transaction.deposit(2000)).to eq([{
+          date: Time.now.strftime('%d/%m/%y'),
+          credit: '%.2f' % 2000,
+          debit: '------',
+          balance: '%.2f' % 2000
+        }])
       end
     end
   end

@@ -3,7 +3,7 @@ require 'bank'
 describe Bank do
 
   subject(:bank) { Bank.new(transactions, print) }
-  let(:transactions) { double("transactions") }
+  let(:transactions) { double(:transactions, deposit: '') }
   let(:print) { double("print") }
 
   context 'so that the methods can be called from transactions' do
@@ -16,7 +16,6 @@ describe Bank do
 
     describe '#deposit' do
       it 'transactions can use deposit method' do
-        allow(transactions).to receive(:deposit)
         bank.deposit(500)
         expect(transactions).to have_received(:deposit)
       end
